@@ -23,7 +23,6 @@
     <section class="content">
         <div class="container-fluided">
             <div class="col-12">
-                cac
                 <iframe src="{{ asset('/file/BBBG.pdf') }}" width="100%" height="100px
                 "></iframe>
                 <!-- /.row -->

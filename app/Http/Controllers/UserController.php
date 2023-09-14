@@ -32,7 +32,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        // $roles = new Roles;
+        $title = 'Thêm người dùng';
+        return view('users.adduser', compact('title'));
     }
 
     /**
