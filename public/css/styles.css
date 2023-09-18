@@ -730,7 +730,7 @@ progress {
 }
 
 .row {
-    --bs-gutter-x: 1.5rem;
+    /* --bs-gutter-x: 1.5rem; */
     --bs-gutter-y: 0;
     display: flex;
     flex-wrap: wrap;
@@ -5381,24 +5381,6 @@ fieldset:disabled .btn {
 .btn .badge {
     position: relative;
     top: -1px;
-}
-
-.alert {
-    --bs-alert-bg: transparent;
-    --bs-alert-padding-x: 1rem;
-    --bs-alert-padding-y: 1rem;
-    --bs-alert-margin-bottom: 1rem;
-    --bs-alert-color: inherit;
-    --bs-alert-border-color: transparent;
-    --bs-alert-border: 1px solid var(--bs-alert-border-color);
-    --bs-alert-border-radius: 0.375rem;
-    position: relative;
-    padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
-    margin-bottom: var(--bs-alert-margin-bottom);
-    color: var(--bs-alert-color);
-    background-color: var(--bs-alert-bg);
-    border: var(--bs-alert-border);
-    border-radius: var(--bs-alert-border-radius);
 }
 
 .alert-heading {

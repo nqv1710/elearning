@@ -11,6 +11,13 @@
 
 
 <script>
+    // $(document).ready(function() {
+    //     setTimeout(function() {
+    //         $('#notification').fadeOut('slow', function() {
+    //             $(this).remove();
+    //         });
+    //     }, 4000);
+    // });
     window.addEventListener('DOMContentLoaded', event => {
         const sidebarToggle = document.body.querySelector('#sidebarToggle');
         if (sidebarToggle) {

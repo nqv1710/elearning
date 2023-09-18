@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+// Users
 Route::resource('users', UserController::class);
+
+// Courses
+Route::resource('courses', CoursesController::class);
 
 Route::middleware([
     'auth:sanctum',
