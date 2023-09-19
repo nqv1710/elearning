@@ -64,4 +64,26 @@ class User extends Authenticatable
         $users =  DB::table('users')->get();
         return $users;
     }
+
+    public function saveUser($data)
+    {
+        // DB::insert('INSERT INTO users(name,email,password,created_at) values(?,?,?,?)', $data);
+        $users = DB::table('users')->insert($data);
+        return $users;
+    }
+
+    public function findOneByID($id)
+    {
+        return  DB::table('users')->where('id', $id)->get();
+    }
+
+    public function updateUser($data, $id)
+    {
+        return DB::table('users')->where('id', $id)->update($data);
+    }
+
+    public function deleteUser($id)
+    {
+        return DB::table('users')->where('id', $id)->delete();
+    }
 }

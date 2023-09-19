@@ -12,6 +12,8 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/css.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/user-styles.css') }}">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -157,11 +159,11 @@
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
                             Quản lý khóa học
                         </a>
-                        <a class="nav-link" href="{{ route('users.index') }}">
+                        <a class="nav-link" href="{{ route('admin.users.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
                             Quản lý nội dung
                         </a>
-                        <a class="nav-link" href="{{ route('users.index') }}">
+                        <a class="nav-link" href="{{ route('admin.users.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
                             Kiểm tra
                         </a>
@@ -174,7 +176,7 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{ route('users.index') }}">Học viên</a>
+                                <a class="nav-link" href="{{ route('admin.users.index') }}">Học viên</a>
                                 <a class="nav-link" href="#">Giáo viên</a>
                             </nav>
                         </div>

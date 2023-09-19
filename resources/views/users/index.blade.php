@@ -1,10 +1,9 @@
 <x-navbar></x-navbar>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluided">
-            <a href="#">
+            <a href="{{ route('admin.users.create') }}">
                 <button type="button" class="custom-btn btn btn-primary d-flex align-items-center">
                     <svg class="mr-1" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -23,9 +22,62 @@
     <section class="content">
         <div class="container-fluided">
             <div class="col-12">
-                <iframe src="{{ asset('/file/BBBG.pdf') }}" width="100%" height="100px
-                "></iframe>
-                <!-- /.row -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <input type="checkbox" name="" id="">
+                                User
+                            </th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Roles</th>
+                            <th scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($usersList as $item)
+                            <tr>
+                                <th scope="row">
+                                    <input type="checkbox" name="" id="">
+                                    {{ $item->name }}
+                                </th>
+                                <td>
+                                    {{ $item->email }}
+                                </td>
+                                <td></td>
+                                <td>
+
+                                    <div class="dropdown">
+                                        <button class="edit-btn " type="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <span class="fs-3"> ...
+                                            </span>
+                                        </button>
+                                        <ul class="dropdown-menu" style="max-width: 10px;">
+                                            <li><a class="btn btn-primary"
+                                                    href="{{ route('admin.users.edit', $item->id) }}">Edit</a>
+                                            </li>
+                                            <li>
+
+                                                <form action="{{ route('admin.users.destroy', $item->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa');"
+                                                        class="btn btn-danger btn-block">Delete</button>
+                                                </form>
+                                            </li>
+                                            </li>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
             </div>
         </div>
         <!-- /.container-fluided -->
