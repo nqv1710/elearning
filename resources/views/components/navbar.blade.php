@@ -10,6 +10,7 @@
     <title>Dashboard - SB Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/css.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/user-styles.css') }}">
@@ -151,19 +152,19 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <a class="nav-link" href="{{ route('courses.index') }}">
+                        <a class="nav-link" href="{{ route('admin.courses.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
                             Trang Chủ
                         </a>
-                        <a class="nav-link" href="{{ route('courses.index') }}">
+                        <a class="nav-link" href="{{ route('admin.courses.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
                             Quản lý khóa học
                         </a>
-                        <a class="nav-link" href="{{ route('admin.users.index') }}">
+                        <a class="nav-link" href="{{ route('admin.lessons.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
                             Quản lý nội dung
                         </a>
-                        <a class="nav-link" href="{{ route('admin.users.index') }}">
+                        <a class="nav-link" href="{{ route('admin.quizzs.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
                             Kiểm tra
                         </a>

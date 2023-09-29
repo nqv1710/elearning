@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequests;
+use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -15,6 +17,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     private $users;
+
     public function __construct()
     {
         $this->users = new User();
@@ -37,6 +40,7 @@ class UserController extends Controller
     {
         // $roles = new Roles;
         // $title = 'Thêm người dùng';
+
         $message = null;
         return view('users.adduser', compact('message'));
     }
@@ -49,12 +53,19 @@ class UserController extends Controller
      */
     public function store(UserRequests $request)
     {
+        $fileName = '';
+        if ($request->hasFile('images')) {
+            $file = $request->file('images');
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('img'), $fileName);
+        }
 
         $data = [
             'name' =>    $request->name,
             'email' =>   $request->email,
             'password' =>  Hash::make($request->password),
-            'created_at' =>  date('Y-m-d H:i:s')
+            'profile_photo_path' => $fileName,
+            'created_at' =>  Carbon::now()
 
         ];
         $this->users->saveUser($data);
@@ -69,16 +80,6 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         $message = '';
         if (!empty($id)) {
@@ -95,6 +96,16 @@ class UserController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -103,14 +114,24 @@ class UserController extends Controller
      */
     public function update(UserRequests $request, $id)
     {
+        $fileName = '';
+        if ($request->hasFile('images')) {
+            $file = $request->file('images');
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('img'), $fileName);
+        }
+      
+
+
         if (!empty($id)) {
             $userDetail = $this->users->findOneByID($id);
             if (!empty($userDetail[0])) {
                 $data = [
                     'name' =>    $request->name,
                     'email' =>   $request->email,
-                    'password' =>   $request->password,
-                    'updated_at' =>  date('Y-m-d H:i:s')
+                    'password' =>  Hash::make($request->password),
+                    'profile_photo_path' => $fileName,
+                    'updated_at' => Carbon::now()
                 ];
                 $this->users->updateUser($data, $id);
                 return redirect()->route('admin.users.index')->with('message', 'Cập nhật thành công');

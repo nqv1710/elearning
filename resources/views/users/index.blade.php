@@ -25,10 +25,12 @@
                 <table class="table">
                     <thead>
                         <tr>
+
                             <th scope="col">
                                 <input type="checkbox" name="" id="">
                                 User
                             </th>
+                            <th scope="col">Hình ảnh</th>
                             <th scope="col">Email</th>
                             <th scope="col">Roles</th>
                             <th scope="col">Edit</th>
@@ -41,6 +43,9 @@
                                     <input type="checkbox" name="" id="">
                                     {{ $item->name }}
                                 </th>
+                                <td>
+                                    <img src="../img/{{$item->profile_photo_path}}" alt="" style="width: 100px;">
+                                </td>
                                 <td>
                                     {{ $item->email }}
                                 </td>
@@ -55,7 +60,7 @@
                                         </button>
                                         <ul class="dropdown-menu" style="max-width: 10px;">
                                             <li><a class="btn btn-primary"
-                                                    href="{{ route('admin.users.edit', $item->id) }}">Edit</a>
+                                                    href="{{ route('admin.users.show', $item->id) }}">Edit</a>
                                             </li>
                                             <li>
 
@@ -64,7 +69,8 @@
                                                     @csrf
                                                     @method('DELETE')
 
-                                                    <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa');"
+                                                    <button type="submit"
+                                                        onclick="return confirm('Bạn có chắc chắn muốn xóa');"
                                                         class="btn btn-danger btn-block">Delete</button>
                                                 </form>
                                             </li>

@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\CategoriesCourseController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuizzController;
+use App\Http\Controllers\LessonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,13 +22,18 @@ use Illuminate\Support\Facades\Route;
 // Users
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UserController::class);
+    Route::resource('categories-course', CategoriesCourseController::class);
+    Route::resource('courses', CoursesController::class);
+    Route::resource('lessons', LessonController::class);
+    Route::resource('quizzs', QuizzController::class);
 
 });
+
+
 
 // Route::resource('users', UserController::class);
 
 // Courses
-Route::resource('courses', CoursesController::class);
 
 Route::middleware([
     'auth:sanctum',
